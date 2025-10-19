@@ -59,7 +59,7 @@ const Login = () => {
                   </label>
                   <input 
                     type="text" 
-                    placeholder='hello@gmail.com'
+                    placeholder='Enter email'
                     className='input input-bordered w-full'
                     value={loginData.email}
                     onChange={(e) => setLoginData({ ...loginData, email: e.target.value})}
@@ -74,7 +74,7 @@ const Login = () => {
                   </label>
                   <input 
                     type="text"
-                    placeholder='********' 
+                    placeholder='Enter password' 
                     className='input input-bordered w-full'
                     value={loginData.password}
                     onChange={(e) => setLoginData({ ...loginData, password: e.target.value})}
