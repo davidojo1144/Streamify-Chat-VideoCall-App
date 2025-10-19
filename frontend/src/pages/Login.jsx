@@ -36,7 +36,7 @@ const Login = () => {
           </div>
 
           {/*ERROR MESSAGE DISPLAY*/}
-          {error && (
+          {error && error.response && error.response.data && (
             <div className='alert alert-error mb-4'>
               <span>{error.response.data.message}</span>
             </div>
