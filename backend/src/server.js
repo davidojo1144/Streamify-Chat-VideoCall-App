@@ -13,7 +13,7 @@
  const PORT = process.env.PORT; 
 
    app.use(cors({
-     origin: [,"https://streamify-chat-video-call-app.vercel.app/api", "http://localhost:5174"],
+     origin: [,"https://streamify-chat-video-call-app-iti8.vercel.app/", "http://localhost:5174"],
      credentials: true, // allow frontend to send cookies
    }));
 
