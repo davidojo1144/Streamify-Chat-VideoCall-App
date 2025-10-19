@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: 'https://streamify-chat-video-call-app.vercel.app/api/',
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/`,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
