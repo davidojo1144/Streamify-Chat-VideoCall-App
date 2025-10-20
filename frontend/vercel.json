@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://streamify-chat-video-call-app.vercel.app/api/:path*"
+    }
+  ]
+}
