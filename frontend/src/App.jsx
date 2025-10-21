@@ -14,13 +14,15 @@ import Layout from './components/Layout.jsx'
 import { useThemeStore } from './store/useThemeStore.js'
 const App = () => {
 
-    
-    const {isLoading, authUser}= useAuthUser();
 
-    const {theme, useTheme } = useThemeStore();
+    const {isLoading, authUser, isError, error}= useAuthUser();
+
+    const {theme} = useThemeStore();
 
     const isAuthenticated = Boolean(authUser);
     const isOnboarded = authUser?.isOnboarded;
+
+    console.log("App - Auth state:", {isLoading, isAuthenticated, authUser, isError, error});
 
     if(isLoading) return <PageLoader/>
 
