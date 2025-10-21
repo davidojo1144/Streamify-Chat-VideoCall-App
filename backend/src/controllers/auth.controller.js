@@ -88,6 +88,7 @@ export async function login(req, res) {
       }
       
       const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {expiresIn: "1d"});
+      console.log("Login - Setting cookie for user:", user._id);
       res.cookie("jwt", token, {
          httpOnly: true,
          maxAge: 24 * 60 * 60 * 1000, // 1 day
@@ -95,6 +96,7 @@ export async function login(req, res) {
          secure: true,
          domain: ".vercel.app",
       });
+      console.log("Login - Cookie set successfully");
       res.status(200).json({
          success: true,
          user,

@@ -8,11 +8,12 @@ export const axiosInstance = axios.create({
   },
 });
 
-// Add request interceptor for debugging
+// Request interceptor for debugging
 axiosInstance.interceptors.request.use(
   (config) => {
     console.log('Making request to:', config.url);
     console.log('Request headers:', config.headers);
+    console.log('With credentials:', config.withCredentials);
     return config;
   },
   (error) => {
@@ -21,10 +22,11 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Add response interceptor for debugging
+// Response interceptor for debugging
 axiosInstance.interceptors.response.use(
   (response) => {
     console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers);
     return response;
   },
   (error) => {

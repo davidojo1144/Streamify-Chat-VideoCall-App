@@ -8,6 +8,7 @@ try {
     console.log("Auth middleware - Token present:", !!token);
     console.log("Auth middleware - Request origin:", req.get('origin'));
     console.log("Auth middleware - Request headers:", req.headers);
+    console.log("Auth middleware - All cookies:", req.cookies);
 
     if(!token){
         console.log("Auth middleware - No token found in cookies");
