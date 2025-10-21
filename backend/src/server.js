@@ -22,10 +22,20 @@
          "http://localhost:5174",
          "http://localhost:5173",
          "http://localhost:3000",
-         "https://streamify-chat-video-call-app.vercel.app"
+         "https://streamify-chat-video-call-app.vercel.app",
+         // Allow all vercel.app subdomains for preview deployments
+         /\.vercel\.app$/
        ];
 
-       if (allowedOrigins.includes(origin)) {
+       // Check if origin is in allowed list or matches vercel.app pattern
+       const isAllowed = allowedOrigins.some(allowed => {
+         if (allowed instanceof RegExp) {
+           return allowed.test(origin);
+         }
+         return allowed === origin;
+       });
+
+       if (isAllowed) {
          return callback(null, true);
        } else {
          console.log('Blocked origin:', origin);
