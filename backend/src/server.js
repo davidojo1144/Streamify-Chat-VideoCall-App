@@ -13,7 +13,25 @@
  const PORT = process.env.PORT; 
 
    app.use(cors({
-     origin: [process.env.CLIENT_URL, "http://localhost:5174", "http://localhost:5173"],
+     origin: function (origin, callback) {
+       // Allow requests with no origin (mobile apps, etc.)
+       if (!origin) return callback(null, true);
+
+       const allowedOrigins = [
+         process.env.CLIENT_URL,
+         "http://localhost:5174",
+         "http://localhost:5173",
+         "http://localhost:3000",
+         "https://streamify-chat-video-call-app.vercel.app"
+       ];
+
+       if (allowedOrigins.includes(origin)) {
+         return callback(null, true);
+       } else {
+         console.log('Blocked origin:', origin);
+         return callback(new Error('Not allowed by CORS'));
+       }
+     },
      credentials: true, // allow frontend to send cookies
    }));
 

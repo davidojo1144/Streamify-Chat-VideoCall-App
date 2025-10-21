@@ -6,6 +6,13 @@ export  const signup = async (signupData) => {
 }
 
 export  const login = async (loginData) => {
+    // Clear any existing cookies/storage before login
+    try {
+      await axiosInstance.post('/auth/logout');
+    } catch {
+      // Ignore errors when clearing cookies
+    }
+
     const response = await axiosInstance.post('/auth/login', loginData);
     return response.data;
 }
