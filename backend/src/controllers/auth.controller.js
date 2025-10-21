@@ -53,9 +53,9 @@ export async function signup(req, res) {
       res.cookie("jwt", token, {
          httpOnly: true,
          maxAge: 24 * 60 * 60 * 1000, // 1 day
-         sameSite: "lax",
-         secure: process.env.NODE_ENV === "production",
-         domain: process.env.NODE_ENV === "production" ? ".vercel.app" : undefined,
+         sameSite: "none",
+         secure: true,
+         domain: ".vercel.app",
       });
 
       res.status(201).json({
@@ -91,9 +91,9 @@ export async function login(req, res) {
       res.cookie("jwt", token, {
          httpOnly: true,
          maxAge: 24 * 60 * 60 * 1000, // 1 day
-         sameSite: "lax",
-         secure: process.env.NODE_ENV === "production",
-         domain: process.env.NODE_ENV === "production" ? ".vercel.app" : undefined,
+         sameSite: "none",
+         secure: true,
+         domain: ".vercel.app",
       });
       res.status(200).json({
          success: true,
@@ -110,9 +110,9 @@ export async function logout(req, res) {
    console.log("Logout Successfully")
    res.clearCookie("jwt", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      domain: process.env.NODE_ENV === "production" ? ".vercel.app" : undefined,
+      secure: true,
+      sameSite: "none",
+      domain: ".vercel.app",
    });
    res.status(200).json({message: "Logout successful"});
 }
